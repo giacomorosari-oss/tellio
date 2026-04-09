@@ -1,0 +1,412 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Iscriviti — Tellio" description="Registrati a Tellio: compila il form e inizia a trovare sostituti d'udienza su WhatsApp.">
+  <Navbar showCta={false} />
+
+  <main class="pt-24 pb-20 md:pt-32 md:pb-28 min-h-screen bg-gradient-to-b from-primary-50 to-surface">
+    <div class="max-w-xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-text">Iscriviti a Tellio</h1>
+        <p class="mt-3 text-text-muted">
+          Compila il form con i tuoi dati. Verificheremo la tua iscrizione all'albo e riceverai il link di accesso a Tellio.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form id="signup-form" class="bg-surface-card border border-primary-100 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5" novalidate>
+        <!-- Nome e Cognome -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="nome" class="block text-sm font-medium text-text mb-1.5">Nome <span class="text-primary-600">*</span></label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+              autocomplete="given-name"
+              class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+              placeholder="Mario"
+            />
+            <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+          </div>
+          <div>
+            <label for="cognome" class="block text-sm font-medium text-text mb-1.5">Cognome <span class="text-primary-600">*</span></label>
+            <input
+              type="text"
+              id="cognome"
+              name="cognome"
+              required
+              autocomplete="family-name"
+              class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+              placeholder="Rossi"
+            />
+            <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+          </div>
+        </div>
+
+        <!-- Numero Iscrizione Albo e Foro -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="numero_albo" class="block text-sm font-medium text-text mb-1.5">N. Iscrizione Albo <span class="text-primary-600">*</span></label>
+            <input
+              type="text"
+              id="numero_albo"
+              name="numero_albo"
+              required
+              class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+              placeholder="12345"
+            />
+            <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+          </div>
+          <div>
+            <label for="foro" class="block text-sm font-medium text-text mb-1.5">Foro di appartenenza <span class="text-primary-600">*</span></label>
+            <input
+              type="text"
+              id="foro"
+              name="foro"
+              required
+              class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+              placeholder="Roma"
+            />
+            <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-text mb-1.5">Email <span class="text-primary-600">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+            placeholder="mario.rossi@email.it"
+          />
+          <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+        </div>
+
+        <!-- Telefono -->
+        <div>
+          <label for="telefono" class="block text-sm font-medium text-text mb-1.5">Telefono (WhatsApp) <span class="text-primary-600">*</span></label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            required
+            autocomplete="tel"
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+            placeholder="+39 333 1234567"
+          />
+          <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+        </div>
+
+        <!-- Area di competenza -->
+        <div>
+          <label for="area_competenza" class="block text-sm font-medium text-text mb-1.5">Area di competenza <span class="text-primary-600">*</span></label>
+          <select
+            id="area_competenza"
+            name="area_competenza"
+            required
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%239a7e84%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%208%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[right_12px_center] bg-no-repeat"
+          >
+            <option value="" disabled selected>Seleziona un'opzione</option>
+            <option value="penale">Penale</option>
+            <option value="civile">Civile</option>
+            <option value="entrambe">Entrambe</option>
+          </select>
+          <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+        </div>
+
+        <!-- Interesse -->
+        <div>
+          <label for="interesse" class="block text-sm font-medium text-text mb-1.5">Cosa ti interessa di Tellio? <span class="text-primary-600">*</span></label>
+          <select
+            id="interesse"
+            name="interesse"
+            required
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%239a7e84%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%208%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[right_12px_center] bg-no-repeat"
+          >
+            <option value="" disabled selected>Seleziona un'opzione</option>
+            <option value="cerco_sostituto">Cerco un sostituto per le mie udienze</option>
+            <option value="cerco_collaborazioni">Cerco nuove collaborazioni</option>
+            <option value="entrambi">Entrambe le cose</option>
+          </select>
+          <p id="interesse-error" class="hidden mt-1 text-xs text-red-500"></p>
+        </div>
+
+        <!-- Privacy -->
+        <div class="flex items-start gap-3 pt-2">
+          <input
+            type="checkbox"
+            id="privacy"
+            name="privacy"
+            required
+            class="mt-0.5 w-4 h-4 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
+          />
+          <label for="privacy" class="text-xs text-text-muted leading-relaxed">
+            Accetto i <a href="#" class="underline hover:text-primary-700">termini di servizio</a> e la <a href="#" class="underline hover:text-primary-700">privacy policy</a>. Confermo di essere un avvocato iscritto all'albo. <span class="text-primary-600">*</span>
+          </label>
+        </div>
+        <p id="privacy-error" class="hidden -mt-3 text-xs text-red-500"></p>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          id="submit-btn"
+          class="w-full flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold text-white bg-primary-700 rounded-xl hover:bg-primary-800 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <span id="btn-text">Invia richiesta di iscrizione</span>
+          <svg id="btn-spinner" class="hidden animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Success message (hidden by default) -->
+      <div id="success-msg" class="hidden bg-surface-card border border-green-200 rounded-2xl p-8 sm:p-10 text-center shadow-sm">
+        <div class="w-16 h-16 mx-auto rounded-full bg-green-50 text-green-600 flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold text-text">Richiesta inviata!</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">
+          Stiamo verificando la tua iscrizione all'albo. Riceverai una email con il link di accesso a Tellio non appena la verifica sar&agrave; completata.
+        </p>
+        <a href="/" class="inline-flex items-center mt-6 text-sm font-medium text-primary-700 hover:text-primary-800 transition-colors">
+          &larr; Torna alla home
+        </a>
+      </div>
+
+      <!-- Error banner (hidden by default) -->
+      <div id="error-banner" class="hidden mt-4 bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+        <p id="error-banner-text">Si è verificato un errore. Riprova tra qualche istante.</p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { supabase } from '../lib/supabase';
+
+  const form = document.getElementById('signup-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text')!;
+  const btnSpinner = document.getElementById('btn-spinner')!;
+  const successMsg = document.getElementById('success-msg')!;
+  const errorBanner = document.getElementById('error-banner')!;
+  const errorBannerText = document.getElementById('error-banner-text')!;
+
+  // --- Validation helpers ---
+
+  function validateEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  }
+
+  function validatePhone(phone: string): boolean {
+    // Accept formats like +39 333 1234567, 3331234567, +393331234567
+    const cleaned = phone.replace(/[\s\-().]/g, '');
+    return /^\+?\d{8,15}$/.test(cleaned);
+  }
+
+  function showFieldError(fieldId: string, message: string) {
+    const field = document.getElementById(fieldId) as HTMLInputElement;
+    const errorEl = field?.parentElement?.querySelector('.field-error') as HTMLElement;
+    if (field) {
+      field.classList.add('border-red-300', 'focus:ring-red-300');
+      field.classList.remove('border-gray-200', 'focus:ring-primary-300');
+    }
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.remove('hidden');
+    }
+  }
+
+  function clearFieldError(fieldId: string) {
+    const field = document.getElementById(fieldId) as HTMLInputElement;
+    const errorEl = field?.parentElement?.querySelector('.field-error') as HTMLElement;
+    if (field) {
+      field.classList.remove('border-red-300', 'focus:ring-red-300');
+      field.classList.add('border-gray-200', 'focus:ring-primary-300');
+    }
+    if (errorEl) {
+      errorEl.classList.add('hidden');
+      errorEl.textContent = '';
+    }
+  }
+
+  function clearAllErrors() {
+    ['nome', 'cognome', 'numero_albo', 'foro', 'email', 'telefono', 'area_competenza'].forEach(clearFieldError);
+    document.getElementById('interesse-error')?.classList.add('hidden');
+    document.getElementById('privacy-error')?.classList.add('hidden');
+    errorBanner.classList.add('hidden');
+  }
+
+  // Clear error on input
+  form.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', () => clearFieldError(input.id));
+  });
+  document.getElementById('area_competenza')?.addEventListener('change', () => clearFieldError('area_competenza'));
+  document.getElementById('interesse')?.addEventListener('change', () => {
+    document.getElementById('interesse-error')?.classList.add('hidden');
+  });
+
+  // --- Form submission ---
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAllErrors();
+
+    const data = new FormData(form);
+    const nome = (data.get('nome') as string)?.trim();
+    const cognome = (data.get('cognome') as string)?.trim();
+    const numero_albo = (data.get('numero_albo') as string)?.trim();
+    const foro = (data.get('foro') as string)?.trim();
+    const email = (data.get('email') as string)?.trim().toLowerCase();
+    const telefono = (data.get('telefono') as string)?.trim();
+    const privacy = data.get('privacy');
+
+    let hasErrors = false;
+
+    if (!nome) { showFieldError('nome', 'Inserisci il tuo nome.'); hasErrors = true; }
+    if (!cognome) { showFieldError('cognome', 'Inserisci il tuo cognome.'); hasErrors = true; }
+
+    if (!numero_albo) { showFieldError('numero_albo', 'Inserisci il numero di iscrizione.'); hasErrors = true; }
+    if (!foro) { showFieldError('foro', 'Inserisci il foro di appartenenza.'); hasErrors = true; }
+
+    if (!email) {
+      showFieldError('email', 'Inserisci la tua email.');
+      hasErrors = true;
+    } else if (!validateEmail(email)) {
+      showFieldError('email', 'Inserisci un indirizzo email valido.');
+      hasErrors = true;
+    }
+
+    if (!telefono) {
+      showFieldError('telefono', 'Inserisci il tuo numero di telefono.');
+      hasErrors = true;
+    } else if (!validatePhone(telefono)) {
+      showFieldError('telefono', 'Inserisci un numero di telefono valido.');
+      hasErrors = true;
+    }
+
+    const area_competenza = (data.get('area_competenza') as string);
+    if (!area_competenza) { showFieldError('area_competenza', 'Seleziona la tua area di competenza.'); hasErrors = true; }
+
+    const interesse = data.get('interesse');
+    if (!interesse) {
+      const interesseErr = document.getElementById('interesse-error')!;
+      interesseErr.textContent = 'Seleziona un\'opzione.';
+      interesseErr.classList.remove('hidden');
+      hasErrors = true;
+    }
+
+    if (!privacy) {
+      const privacyErr = document.getElementById('privacy-error')!;
+      privacyErr.textContent = 'Devi accettare i termini per procedere.';
+      privacyErr.classList.remove('hidden');
+      hasErrors = true;
+    }
+
+    if (hasErrors) {
+      // Scroll to first error
+      const firstError = form.querySelector('.border-red-300, #privacy-error:not(.hidden)');
+      firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Disable button & show spinner
+    submitBtn.disabled = true;
+    btnText.textContent = 'Invio in corso...';
+    btnSpinner.classList.remove('hidden');
+
+    // Mappa area_competenza in array per specialization
+    let specialization: string[];
+    if (area_competenza === 'entrambe') {
+      specialization = ['penale', 'civile'];
+    } else {
+      specialization = [area_competenza!];
+    }
+
+    // Mappa interesse in stringa leggibile per bio
+    const interesseMap: Record<string, string> = {
+      cerco_sostituto: 'Cerco un sostituto per le mie udienze',
+      cerco_collaborazioni: 'Cerco nuove collaborazioni',
+      entrambi: 'Cerco sostituto e nuove collaborazioni',
+    };
+    const bio = interesseMap[interesse as string] || '';
+
+    try {
+      // 1. Crea utente in auth.users
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: email!,
+        password: crypto.randomUUID(),
+      });
+
+      if (authError) {
+        if (authError.message?.includes('already registered')) {
+          errorBannerText.textContent = 'Questa email risulta già registrata.';
+        } else {
+          errorBannerText.textContent = 'Si è verificato un errore. Riprova tra qualche istante.';
+        }
+        errorBanner.classList.remove('hidden');
+        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const userId = authData.user?.id;
+      if (!userId) {
+        errorBannerText.textContent = 'Si è verificato un errore. Riprova tra qualche istante.';
+        errorBanner.classList.remove('hidden');
+        return;
+      }
+
+      // 2. Inserisci profilo in profiles
+      const { error: profileError } = await supabase.from('profiles').insert({
+        user_id: userId,
+        first_name: nome,
+        last_name: cognome,
+        bar_number: numero_albo,
+        foro_appartenenza: foro,
+        mail: email,
+        phone: telefono,
+        phone_whatsapp: telefono,
+        specialization,
+        bio,
+        is_verified: true,
+      });
+
+      if (profileError) {
+        if (profileError.code === '23505') {
+          errorBannerText.textContent = 'Questo numero WhatsApp risulta già registrato.';
+        } else {
+          errorBannerText.textContent = 'Si è verificato un errore. Riprova tra qualche istante.';
+        }
+        errorBanner.classList.remove('hidden');
+        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        // Success
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch {
+      errorBannerText.textContent = 'Errore di connessione. Controlla la tua rete e riprova.';
+      errorBanner.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = 'Invia richiesta di iscrizione';
+      btnSpinner.classList.add('hidden');
+    }
+  });
+</script>

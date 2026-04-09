@@ -1,0 +1,88 @@
+---
+const faqs = [
+  {
+    q: "Tellio è un marketplace per le sostituzioni?",
+    a: "No. Tellio opera come facilitatore di contatto tra professionisti. Qualsiasi eventuale accordo economico avverrà privatamente e direttamente tra colleghi. Non svolgiamo attività di intermediazione e non tratteniamo alcuna commissione su eventuali collaborazioni."
+  },
+  {
+    q: "Chi può usare Tellio?",
+    a: "Gli avvocati penalisti iscritti all'albo."
+  },
+  {
+    q: "Come si attiva?",
+    a: "Dopo aver compilato il questionario, riceverai una notifica via email con il link per accedere direttamente a Tellio."
+  },
+  {
+    q: "I miei dati sono al sicuro?",
+    a: "Sì. Il nostro Agente AI analizza il file (foto/audio/testo), ne estrae solo i dati logistici (luogo, data e ora) ed infine lo cancella dai nostri server. Ad ogni modo, ti invitiamo a condividere solo le coordinate spazio-temporali (luogo, data e ora) necessarie per il matching, oscurando o omettendo gli altri dati."
+  }
+];
+---
+
+<section id="faq" class="py-14 sm:py-20 md:py-28 bg-surface">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fade-in text-center mb-14">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-text">Domande frequenti</h2>
+      <p class="mt-3 text-text-muted">Le risposte che cercavi su Tellio.</p>
+    </div>
+
+    <div class="fade-in bg-surface-card border border-primary-100/60 rounded-2xl sm:rounded-3xl overflow-hidden divide-y divide-primary-100/60">
+      {faqs.map((faq, i) => (
+        <div class="faq-item">
+          <button
+            class="faq-trigger w-full flex items-center justify-between px-5 sm:px-8 py-5 sm:py-6 text-left hover:bg-primary-50/30 transition-colors gap-4"
+            aria-expanded="false"
+            data-faq={i}
+          >
+            <div class="flex items-center gap-4">
+              <span class="w-8 h-8 rounded-full bg-primary-100/50 text-primary-600 flex items-center justify-center shrink-0 text-xs font-bold">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="text-sm sm:text-base font-medium text-text">{faq.q}</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-primary-100/50 flex items-center justify-center shrink-0">
+              <svg class="faq-chevron w-4 h-4 text-primary-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+            <div class="overflow-hidden">
+              <p class="text-sm sm:text-base text-text-muted leading-relaxed px-5 sm:px-8 pb-5 sm:pb-6 pl-[4.25rem] sm:pl-[5.5rem]">{faq.a}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item')!;
+      const content = item.querySelector('.faq-content')!;
+      const chevron = item.querySelector('.faq-chevron')!;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) {
+          other.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+          other.querySelector('.faq-content')?.classList.remove('grid-rows-[1fr]');
+          other.querySelector('.faq-content')?.classList.add('grid-rows-[0fr]');
+          other.querySelector('.faq-chevron')?.classList.remove('rotate-180');
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) {
+        content.classList.remove('grid-rows-[1fr]');
+        content.classList.add('grid-rows-[0fr]');
+      } else {
+        content.classList.remove('grid-rows-[0fr]');
+        content.classList.add('grid-rows-[1fr]');
+      }
+      chevron.classList.toggle('rotate-180');
+    });
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+const rows = [
+  { without: "Ansia e stress", withT: "Sostituto trovato subito" },
+  { without: "Chiamate e messaggi a vuoto", withT: "1 messaggio diretto a Tellio" },
+  { without: "Network limitato", withT: "Nuove collaborazioni" },
+];
+---
+
+<section id="vantaggi" class="py-14 sm:py-20 md:py-28 bg-surface">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fade-in text-center max-w-2xl mx-auto mb-14">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-text">
+        Perché scegliere Tellio.
+      </h2>
+    </div>
+
+    <!-- Tabella comparativa -->
+    <div class="fade-in bg-surface-card border border-primary-100/60 rounded-2xl sm:rounded-3xl overflow-hidden">
+      <!-- Header -->
+      <div class="grid grid-cols-2">
+        <div class="px-5 sm:px-8 py-4 sm:py-5 border-b border-r border-primary-100/60">
+          <h3 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-text-light">Senza Tellio</h3>
+        </div>
+        <div class="px-5 sm:px-8 py-4 sm:py-5 border-b border-primary-100/60 bg-primary-700">
+          <h3 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary-200">Con Tellio</h3>
+        </div>
+      </div>
+      <!-- Righe -->
+      {rows.map((row, i) => (
+        <div class:list={["grid grid-cols-2", i < rows.length - 1 && "border-b border-primary-100/60"]}>
+          <div class="px-5 sm:px-8 py-5 sm:py-6 border-r border-primary-100/60 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-red-50 text-red-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </span>
+            <span class="text-sm sm:text-base text-text-muted leading-snug">{row.without}</span>
+          </div>
+          <div class="px-5 sm:px-8 py-5 sm:py-6 bg-primary-700 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-white/20 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span class="text-sm sm:text-base text-white leading-snug">{row.withT}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

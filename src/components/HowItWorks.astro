@@ -1,0 +1,168 @@
+---
+const waIcon = `<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.212L4 20l1.212-3.757A8 8 0 1112 20z"/></svg>`;
+const checkIcon = `<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`;
+---
+
+<section id="come-funziona" class="py-14 sm:py-20 md:py-28 bg-surface">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fade-in text-center max-w-2xl mx-auto mb-14 sm:mb-20">
+      <h2 class="text-3xl sm:text-4xl font-bold text-text">
+        Come funziona <span class="text-primary-700">Tellio</span>
+      </h2>
+      <p class="mt-3 text-text-muted">Semplice, su WhatsApp.</p>
+    </div>
+
+    <!-- PER CHI CERCA -->
+    <div class="fade-in relative bg-surface-card border border-primary-100/60 rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-12">
+      <div class="grid md:grid-cols-2">
+        <!-- Testo -->
+        <div class="p-6 sm:p-10 md:pr-6">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-100 px-3 py-1 rounded-full">
+            Per chi cerca
+          </span>
+          <h3 class="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-text">
+            Hai un'udienza scoperta? Trova un collega in un attimo.
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-text-muted leading-relaxed">
+            Tellio ti dice chi è già presente in Tribunale o in aula.
+          </p>
+          <ul class="mt-5 sm:mt-6 space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-text-muted"><strong class="text-text">Stop al giro di telefonate:</strong> chiedi a Tellio e vai a colpo sicuro.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-text-muted"><strong class="text-text">Filtra i colleghi</strong> per autorità giudiziaria, aula e orario.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-text-muted"><strong class="text-text">Contatto diretto:</strong> Tellio ti fornisce il contatto WhatsApp del collega.</span>
+            </li>
+          </ul>
+          <a href="/signup" class="w-full sm:w-auto inline-flex items-center justify-center mt-6 sm:mt-8 px-6 py-3 text-sm font-semibold text-white bg-primary-700 rounded-full hover:bg-primary-800 transition-colors shadow-sm">
+            Iscriviti
+          </a>
+        </div>
+        <!-- WhatsApp mockup integrato -->
+        <div class="relative flex justify-center md:justify-end items-end px-6 pt-6 md:px-0 md:pt-8 md:pr-8">
+          <div class="w-full max-w-[300px] rounded-t-2xl border border-b-0 border-gray-200 shadow-2xl overflow-hidden bg-[#efeae2]">
+            <div class="bg-[#075E54] px-4 py-3 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <Fragment set:html={waIcon} />
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">Tellio</p>
+                <p class="text-green-200 text-[10px]">online</p>
+              </div>
+            </div>
+            <div class="px-3 py-4 space-y-2.5">
+              <div class="flex justify-end">
+                <div class="bg-[#dcf8c6] rounded-lg rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm">
+                  <p class="text-[12px] text-gray-800 leading-relaxed">Ciao, ho bisogno di un sostituto per un'udienza alle 11:30 al Tribunale di Roma, aula 7</p>
+                  <p class="text-[9px] text-gray-500 text-right mt-1">09:42</p>
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm">
+                  <p class="text-[12px] text-gray-800 leading-relaxed">Ho trovato <strong>2 colleghi</strong> disponibili al Tribunale di Roma:</p>
+                  <div class="mt-2 space-y-1.5">
+                    <div class="bg-gray-50 rounded-md px-2.5 py-1.5">
+                      <p class="text-[11px] font-semibold text-gray-800">Avv. Marco Bianchi</p>
+                      <p class="text-[10px] text-gray-500">+39 338 412 7891</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-md px-2.5 py-1.5">
+                      <p class="text-[11px] font-semibold text-gray-800">Avv. Laura Rossi</p>
+                      <p class="text-[10px] text-gray-500">+39 349 765 2034</p>
+                    </div>
+                  </div>
+                  <p class="text-[9px] text-gray-500 text-right mt-1.5">09:42</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PER CHI È DISPONIBILE -->
+    <div class="fade-in relative bg-primary-700 rounded-2xl sm:rounded-3xl overflow-hidden text-white shadow-xl shadow-primary-700/20">
+      <div class="grid md:grid-cols-2">
+        <!-- WhatsApp mockup integrato -->
+        <div class="relative flex justify-center md:justify-start items-end order-2 md:order-1 px-6 pt-6 md:px-0 md:pt-8 md:pl-8">
+          <div class="w-full max-w-[300px] rounded-t-2xl border border-b-0 border-white/10 shadow-2xl overflow-hidden bg-[#efeae2]">
+            <div class="bg-[#075E54] px-4 py-3 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <Fragment set:html={waIcon} />
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">Tellio</p>
+                <p class="text-green-200 text-[10px]">online</p>
+              </div>
+            </div>
+            <div class="px-3 py-4 space-y-2.5">
+              <div class="flex justify-end">
+                <div class="bg-[#dcf8c6] rounded-lg rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm">
+                  <p class="text-[12px] text-gray-800 leading-relaxed">Sono al Tribunale di Roma, aula 3. Disponibile fino alle 13:00</p>
+                  <p class="text-[9px] text-gray-500 text-right mt-1">08:15</p>
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm">
+                  <p class="text-[12px] text-gray-800 leading-relaxed">Perfetto! Ho registrato la tua disponibilità:</p>
+                  <div class="mt-2 bg-gray-50 rounded-md px-2.5 py-2">
+                    <div class="flex items-center gap-1.5">
+                      <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      <p class="text-[11px] font-semibold text-gray-800">Tribunale di Roma</p>
+                    </div>
+                    <p class="text-[10px] text-gray-500 mt-0.5 ml-[18px]">Aula 3 — fino alle 13:00</p>
+                  </div>
+                  <p class="text-[12px] text-gray-800 leading-relaxed mt-2">I colleghi che avranno bisogno potranno trovarti.</p>
+                  <p class="text-[9px] text-gray-500 text-right mt-1.5">08:15</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Testo -->
+        <div class="p-6 sm:p-10 md:pl-6 order-1 md:order-2">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-200 bg-white/15 px-3 py-1 rounded-full">
+            Per chi è disponibile
+          </span>
+          <h3 class="mt-4 text-xl sm:text-2xl md:text-3xl font-bold">
+            Sei già in Tribunale? Fatti trovare e allarga la tua rete.
+          </h3>
+          <ul class="mt-5 sm:mt-6 space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-primary-100"><strong class="text-white">Visibilità immediata:</strong> comunica a Tellio la tua presenza in tribunale.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-primary-100">Costruisci <strong class="text-white">opportunità di networking</strong> e nuove collaborazioni.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center shrink-0">
+                <Fragment set:html={checkIcon} />
+              </span>
+              <span class="text-sm text-primary-100">Diventa un <strong class="text-white">punto di riferimento</strong> per i tuoi colleghi.</span>
+            </li>
+          </ul>
+          <a href="/signup" class="w-full sm:w-auto inline-flex items-center justify-center mt-6 sm:mt-8 px-6 py-3 text-sm font-semibold text-primary-700 bg-white rounded-full hover:bg-primary-50 transition-colors shadow-sm">
+            Iscriviti
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
