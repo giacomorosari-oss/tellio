@@ -2,9 +2,9 @@
 ---
 
 <section class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center bg-surface overflow-hidden">
-  <!-- Raggi radiali -->
+  <!-- Dot grid -->
   <div class="absolute inset-0 flex items-center justify-center">
-    <div class="hero-rays absolute w-[800px] h-[800px] sm:w-[1400px] sm:h-[1400px]"></div>
+    <div class="hero-dots absolute w-[1000px] h-[800px] sm:w-[2000px] sm:h-[1400px]"></div>
   </div>
 
   <!-- Fade radiale -->
@@ -12,7 +12,8 @@
 
   <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
     <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text leading-tight">
-      Avvocato, trova un collega <span class="text-primary-700">in un attimo.</span>
+      <span class="text-primary-700">Avvocato,</span><br />
+      trova un <span class="text-primary-700">collega</span><br class="sm:hidden" /> in un <span class="text-primary-700">attimo.</span>
     </h1>
 
     <p class="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
@@ -36,14 +37,14 @@
 </section>
 
 <style>
-  .hero-rays {
-    background: repeating-conic-gradient(
-      from 0deg,
-      var(--color-primary-200) 0deg 1deg,
-      transparent 1deg 10deg
+  .hero-dots {
+    background-image: radial-gradient(
+      var(--color-primary-400) 1px,
+      transparent 1px
     );
-    opacity: 0.15;
-    mask-image: radial-gradient(circle, black 15%, transparent 65%);
-    -webkit-mask-image: radial-gradient(circle, black 15%, transparent 65%);
+    background-size: 24px 24px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse 55% 50% at center, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 55% 50% at center, black 20%, transparent 80%);
   }
 </style>
