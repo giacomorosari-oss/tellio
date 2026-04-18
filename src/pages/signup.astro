@@ -92,6 +92,21 @@ import Footer from '../components/Footer.astro';
           <p class="field-error hidden mt-1 text-xs text-red-500"></p>
         </div>
 
+        <!-- PEC -->
+        <div>
+          <label for="pec" class="block text-sm font-medium text-text mb-1.5">PEC <span class="text-primary-600">*</span></label>
+          <input
+            type="email"
+            id="pec"
+            name="pec"
+            required
+            autocomplete="email"
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-white text-text placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 transition-colors"
+            placeholder="mario.rossi@pec.it"
+          />
+          <p class="field-error hidden mt-1 text-xs text-red-500"></p>
+        </div>
+
         <!-- Telefono -->
         <div>
           <label for="telefono" class="block text-sm font-medium text-text mb-1.5">Telefono (WhatsApp) <span class="text-primary-600">*</span></label>
@@ -246,7 +261,7 @@ import Footer from '../components/Footer.astro';
   }
 
   function clearAllErrors() {
-    ['nome', 'cognome', 'numero_albo', 'foro', 'email', 'telefono', 'area_competenza'].forEach(clearFieldError);
+    ['nome', 'cognome', 'numero_albo', 'foro', 'email', 'pec', 'telefono', 'area_competenza'].forEach(clearFieldError);
     document.getElementById('interesse-error')?.classList.add('hidden');
     document.getElementById('privacy-error')?.classList.add('hidden');
     errorBanner.classList.add('hidden');
@@ -273,6 +288,7 @@ import Footer from '../components/Footer.astro';
     const numero_albo = (data.get('numero_albo') as string)?.trim();
     const foro = (data.get('foro') as string)?.trim();
     const email = (data.get('email') as string)?.trim().toLowerCase();
+    const pec = (data.get('pec') as string)?.trim().toLowerCase();
     const telefono = (data.get('telefono') as string)?.trim();
     const privacy = data.get('privacy');
 
@@ -289,6 +305,14 @@ import Footer from '../components/Footer.astro';
       hasErrors = true;
     } else if (!validateEmail(email)) {
       showFieldError('email', 'Inserisci un indirizzo email valido.');
+      hasErrors = true;
+    }
+
+    if (!pec) {
+      showFieldError('pec', 'Inserisci la tua PEC.');
+      hasErrors = true;
+    } else if (!validateEmail(pec)) {
+      showFieldError('pec', 'Inserisci un indirizzo PEC valido.');
       hasErrors = true;
     }
 
@@ -379,6 +403,7 @@ import Footer from '../components/Footer.astro';
         bar_number: numero_albo,
         foro_appartenenza: foro,
         mail: email,
+        pec,
         phone: telefono,
         phone_whatsapp: telefono,
         specialization,
