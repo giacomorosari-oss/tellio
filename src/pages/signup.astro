@@ -211,21 +211,8 @@ import Footer from '../components/Footer.astro';
   <Footer />
 </Layout>
 
-<!-- EmailJS SDK (notifica email ad ogni nuova iscrizione) -->
-<script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script>
   import { supabase } from '../lib/supabase';
-
-  // EmailJS è caricato via CDN come variabile globale
-  declare const emailjs: {
-    send: (
-      serviceId: string,
-      templateId: string,
-      params: Record<string, string>,
-      options: { publicKey: string }
-    ) => Promise<{ status: number; text: string }>;
-  };
 
   const form = document.getElementById('signup-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
@@ -433,38 +420,30 @@ import Footer from '../components/Footer.astro';
         errorBanner.classList.remove('hidden');
         errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
-        // Success — invia email di notifica via EmailJS (non bloccante)
+        // Success — invia email di notifica via Resend (Supabase Edge Function)
         const areaLabelMap: Record<string, string> = {
           penale: 'Penale',
           civile: 'Civile',
           entrambe: 'Penale e Civile',
         };
-        const emailParams = {
-          nome: nome!,
-          cognome: cognome!,
-          nome_completo: `${nome} ${cognome}`,
-          numero_albo: numero_albo!,
-          foro: foro!,
-          email: email!,
-          pec: pec!,
-          telefono: telefono!,
-          area_competenza: areaLabelMap[area_competenza!] || area_competenza!,
-          interesse: bio,
-          time: new Date().toLocaleString('it-IT', { dateStyle: 'long', timeStyle: 'short' }),
-        };
 
-        const emailjsServiceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
-        const emailjsTemplateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
-        const emailjsPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
-
-        if (emailjsServiceId && emailjsTemplateId && emailjsPublicKey && typeof emailjs !== 'undefined') {
-          try {
-            await emailjs.send(emailjsServiceId, emailjsTemplateId, emailParams, {
-              publicKey: emailjsPublicKey,
-            });
-          } catch (err) {
-            console.error('EmailJS notification failed:', err);
-          }
+        try {
+          await supabase.functions.invoke('send-signup-notification', {
+            body: {
+              nome: nome!,
+              cognome: cognome!,
+              numero_albo: numero_albo!,
+              foro: foro!,
+              email: email!,
+              pec: pec!,
+              telefono: telefono!,
+              area_competenza: areaLabelMap[area_competenza!] || area_competenza!,
+              interesse: bio,
+              time: new Date().toLocaleString('it-IT', { dateStyle: 'long', timeStyle: 'short' }),
+            },
+          });
+        } catch (err) {
+          console.error('Email notification failed:', err);
         }
 
         form.classList.add('hidden');
